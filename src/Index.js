@@ -1,13 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route } from 'react-router';
-import App from './components/App';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
 
-window.React = React;
-
-render(
-  (<Router>
-    <Route path="/" component={App}>
-    </Route>
-  </Router>), document.getElementById('content')
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
 );
