@@ -1,4 +1,4 @@
-# Hack the North Frontend Challenge Starter Kit
+# Hack the North Frontend 2016 Challenge Starter Kit
 
 This is a minimal starter kit in order to have you diving into the challenge with no setup hassle. There is a requirement for having NodeJS setup in order to use this.
 
