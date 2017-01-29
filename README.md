@@ -17,7 +17,12 @@ npm install
 ### Run development mode:
 
 ```
-npm start 
+npm start
 ```
 
 Your app will be running at [http://localhost:3000/](http://localhost:3000/)
+
+
+## Additional information
+
+For more information on setting up an application like this check out [Create React App](https://github.com/facebookincubator/create-react-app).
