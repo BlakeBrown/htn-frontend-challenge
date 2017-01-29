@@ -1,17 +1,24 @@
-var React = require('react');
-var HelloWorldComponent = require('./HelloWorldComponent.js');
+import React, { Component } from 'react';
+import HelloWorld from './components/HelloWorld';
+import './App.css';
+import logoSvg from './assets/logo.svg'
 
-module.exports = React.createClass({
+class App extends Component {
   render() {
     return (
       <div>
-        <header>
+        <header className='header'>
+          <div className='logo'>
+            <img src={logoSvg}/>
+          </div>
           <h1>Hack the North Frontend Challenge</h1>
         </header>
         <section>
-          <HelloWorldComponent />
+          <HelloWorld />
         </section>
       </div>
     );
   }
-});
+}
+
+export default App;
