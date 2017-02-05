@@ -24,3 +24,42 @@
 .hacker {
   font-size:24px;
 }
+
+.hacker > img {
+  height: 100px;
+}
+
+.pagination {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #0ec6fd;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 42%;
+  right: 28%;
+}
+
+.pagination > li {
+  display: inline-block;
+  margin: 15px;
+  padding: 8px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.pagination > li:hover {
+  cursor: pointer;
+}
+
+.pagination > li.active {
+  border: 1px solid #0b2f35;
+  border-radius: 50px;
+  width: 36px;
+  text-align: center;
+  color: #0b2f35;
+}
+
+.pagination > li > a {
+  outline: 0;
+}

@@ -51,9 +51,18 @@ class HackerList extends Component {
 	};
 
 	render() {
-
 		let hackers = this.state.hackersPaginated.map((hacker,index) =>
-			<li key={index} className="hacker">{hacker.name}</li>
+			<li key={index} className="hacker">
+				<div className="hacker-name">{hacker.name}</div>
+				<img className="hacker-picture" src={hacker.picture}/>
+				<ul>
+					let skills = []
+					let skill = hacker.map(skill =>
+						skills.push({skill.skill});
+					);
+					{skills}
+				</ul>
+			</li>
 		);
 
 		return (
