@@ -18,7 +18,7 @@ class App extends Component {
           <HelloWorld />
         </section>
         <section>
-          <HackerList />
+          <HackerList perPage={10} />
         </section>
       </div>
     );
