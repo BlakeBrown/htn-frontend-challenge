@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HelloWorld from './components/HelloWorld';
+import HackerList from './components/HackerList';
 import './App.css';
 import logoSvg from './assets/logo.svg'
 
@@ -15,6 +16,9 @@ class App extends Component {
         </header>
         <section>
           <HelloWorld />
+        </section>
+        <section>
+          <HackerList />
         </section>
       </div>
     );
