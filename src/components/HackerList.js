@@ -48,28 +48,30 @@ class HackerList extends Component {
 	  }
 	  console.log(hackersPaginated);
 	  this.setState({hackersPaginated});
+	  this.setState({offset});
 	};
+
+	listSkills = function(hacker) {
+		return hacker.skills.map((skill,index) =>
+				<li key={index} className="hacker-skill">{skill.skill}</li>
+			);
+	}
 
 	render() {
 		let hackers = this.state.hackersPaginated.map((hacker,index) =>
-			<li key={index} className="hacker">
-				<div className="hacker-name">{hacker.name}</div>
-				<img className="hacker-picture" src={hacker.picture}/>
-				<ul>
-					let skills = []
-					let skill = hacker.map(skill =>
-						skills.push({skill.skill});
-					);
-					{skills}
-				</ul>
-			</li>
+			<div>
+				<div key={index} className="hacker clearfix">
+					<img className="hacker-picture" src={hacker.picture}/>
+					<div className="hacker-name">{hacker.name}</div>
+					<ul className="hacker-skills"> { this.listSkills(hacker) } </ul>
+				</div>
+				<br />
+			</div>
 		);
 
 		return (
 			<div className="hacker-list">
-				<ul>
-				  { hackers }
-				</ul>
+			  	{ hackers }
 				<ReactPaginate previousLabel={"previous"}
 					nextLabel={"next"}
 					breakLabel={<a href="">...</a>}

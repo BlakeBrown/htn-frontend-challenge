@@ -2,7 +2,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header {
@@ -22,11 +22,47 @@
 }
 
 .hacker {
-  font-size:24px;
+  font-size: 24px;
+  display: inline-block;
+  width: 400px;
+  background-color: #0ec6fd;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 2px;
 }
 
 .hacker > img {
   height: 100px;
+  border-radius: 10%;
+  float: left;
+  margin-right: 20px;
+}
+
+.hacker-list {
+  margin-left: 15px;
+}
+
+.hacker-name {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.hacker-skills {
+  list-style-type: none;
+  font-size: 16px;
+}
+
+.hacker-skill {
+  background-color: #14508e;
+      display: -webkit-inline-box;
+      margin-right: 10px;
+      padding: 4px 8px;
+      color: #ffffff;
+      font-weight: 500;
+      margin-bottom: 10px;
+      border-radius: 4px;
 }
 
 .pagination {
@@ -36,14 +72,14 @@
   background-color: #0ec6fd;
   border-radius: 4px;
   position: fixed;
-  bottom: 42%;
-  right: 28%;
+  bottom: 5%;
+  right: 5%;
 }
 
 .pagination > li {
+  text-align: center;
   display: inline-block;
   margin: 15px;
-  padding: 8px;
   color: #fff;
   font-weight: bold;
 }
@@ -53,13 +89,29 @@
 }
 
 .pagination > li.active {
-  border: 1px solid #0b2f35;
-  border-radius: 50px;
-  width: 36px;
   text-align: center;
   color: #0b2f35;
 }
 
+.pagination > li.active > a {
+  border: 1px solid #0b2f35;
+  border-radius: 12%;
+}
+
 .pagination > li > a {
   outline: 0;
+  padding: 8px 12px;
+  border:none;
+  outline:none;
+  text-decoration:none;
+  color:inherit;
+}
+
+/* Fix float issues */
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
 }
