@@ -17,6 +17,7 @@ class HackerList extends Component {
 	  };
 	}
 
+	// When the component mounts, fetch hacker list and initiate pagination
 	componentDidMount() {
 		axios.get('https://hackthenorth.com/fe-users.json')
 		.then(res => {
@@ -32,23 +33,22 @@ class HackerList extends Component {
 		});
 	}
 
+	// Sets pagination
 	handlePageClick = (data) => {
-	  let selected = data.selected;
-	  let offset = Math.ceil(selected * this.props.perPage);
-	  console.log(selected);
-	  console.log(offset);
-	  let hackersPaginated = [];
-	  let numHackers = offset + this.props.perPage;
-	  // Check if it's the last page of pagination, might not be able to display perPage # of hackers
-	  if(numHackers >= this.state.hackers.length) {
-	  	numHackers = this.state.hackers.length-1;
-	  }
-	  for(let i = offset; i < numHackers; i++) {
-	  	hackersPaginated.push(this.state.hackers[i]);
-	  }
-	  console.log(hackersPaginated);
-	  this.setState({hackersPaginated});
-	  this.setState({offset});
+		let selected = data.selected;
+		let offset = Math.ceil(selected * this.props.perPage);
+		// offset is the index of this.state.hackers[] to display
+		let hackersPaginated = [];
+		let numHackers = offset + this.props.perPage;
+		// Check if it's the last page of pagination, might not be able to display perPage # of hackers
+		if(numHackers >= this.state.hackers.length) {
+			numHackers = this.state.hackers.length-1;
+		}
+		for(let i = offset; i < numHackers; i++) {
+			hackersPaginated.push(this.state.hackers[i]);
+		}
+		this.setState({hackersPaginated});
+		this.setState({offset});
 		this.refs.searchBar.value = '';
 	};
 
@@ -58,12 +58,20 @@ class HackerList extends Component {
 			);
 	}
 
+	// Called when text is entered in search bar
+	// Filters by hacker name & skills
 	onChange = function(event) {
-		console.log(event.target.value);
 		let hackersPaginated = [];
 		for(let i = 0; i < this.state.hackers.length; i++) {
 			if(~this.state.hackers[i].name.toLowerCase().indexOf(event.target.value.toLowerCase())) {
 				hackersPaginated.push(this.state.hackers[i]);
+			} else {
+				for(let j = 0; j < this.state.hackers[i].skills.length; j++) {
+					if(~this.state.hackers[i].skills[j].skill.toLowerCase().indexOf(event.target.value.toLowerCase())) {
+						hackersPaginated.push(this.state.hackers[i]);
+						break;
+					}
+				}
 			}
 			if(hackersPaginated.length == 10) {
 				break;
@@ -72,14 +80,55 @@ class HackerList extends Component {
 		this.setState({hackersPaginated});
 	 }
 
+	// Updates hacker status to "Accepted"
+	acceptHacker = function(index, event) {
+		for(let i = 0; i < this.state.hackers.length; i++) {
+			if(this.state.hackers[i].name == this.state.hackersPaginated[index].name) {
+				this.state.hackers[i].status = "Accepted";
+				break;
+			}
+		}
+		this.forceUpdate();
+	}
+
+	// Updates hacker status to "Rejected"
+	rejectHacker = function(index, event) {
+		for(let i = 0; i < this.state.hackers.length; i++) {
+			if(this.state.hackers[i].name == this.state.hackersPaginated[index].name) {
+				this.state.hackers[i].status = "Rejected";
+				break;
+			}
+		}
+		this.forceUpdate();
+	}
+
+	// Returns accept css classes for hacker
+	getAcceptStatus = function(hacker) {
+		if(hacker.status == "Accepted") {
+			return "hacker-accept hacker-accept-active";
+		}
+		return "hacker-accept";
+	}
+
+	// Returns reject css classes for hacker
+	getRejectStatus = function(hacker) {
+		if(hacker.status == "Rejected") {
+			return "hacker-reject hacker-reject-active";
+		}
+		return "hacker-reject";
+	}
+
+	// Render displays hackers, pagination and search bar
 	render() {
 		let hackers = this.state.hackersPaginated.map((hacker,index) =>
-			<div>
-				<div key={index} className="hacker clearfix">
+			<div key={index} className="hacker-wrapper">
+				<div className="hacker clearfix">
 					<img className="hacker-picture" src={hacker.picture}/>
 					<div className="hacker-name">{hacker.name}</div>
 					<ul className="hacker-skills"> { this.listSkills(hacker) } </ul>
 				</div>
+				<div className={this.getAcceptStatus(hacker)} onClick={this.acceptHacker.bind(this, index)}><i class="fa fa-check" aria-hidden="true"></i>Accept</div>
+				<div className={this.getRejectStatus(hacker)} onClick={this.rejectHacker.bind(this, index)}><i class="fa fa-times" aria-hidden="true"></i>Reject</div>
 				<br />
 			</div>
 		);

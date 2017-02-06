@@ -1,3 +1,4 @@
+/* Original styles*/
 * {
   margin: 0px;
   padding: 0px;
@@ -19,6 +20,12 @@
 .logo {
   width: 56px;
   margin-right: 16px;
+}
+
+/* Hackers */
+.hacker-wrapper {
+  position: relative;
+  width: 600px;
 }
 
 .hacker {
@@ -56,15 +63,65 @@
 
 .hacker-skill {
   background-color: #14508e;
-      display: -webkit-inline-box;
-      margin-right: 10px;
-      padding: 4px 8px;
-      color: #ffffff;
-      font-weight: 500;
-      margin-bottom: 10px;
-      border-radius: 4px;
+  display: -webkit-inline-box;
+  margin-right: 10px;
+  padding: 4px 8px;
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 10px;
+  border-radius: 4px;
 }
 
+.hacker-accept {
+  position: absolute;
+  top: 20px;
+  right: 116px;
+  background-color: #fff;
+  color: #39bf31;
+  border: 1px solid #39bf31;
+  padding: 3px 6px;
+  border-radius: 4px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.hacker-accept-active {
+  background-color: #39bf31;
+  color: #fff;
+}
+
+.hacker-accept:hover {
+  background-color: #39bf31;
+  color: #fff;
+  cursor: pointer;
+}
+
+.hacker-reject {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  position: absolute;
+  background-color: #fff;
+  color: red;
+  border: 1px solid red;
+  padding: 3px 6px;
+  border-radius: 4px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.hacker-reject-active {
+  background-color: red;
+  color: #fff;
+}
+
+.hacker-reject:hover {
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Pagination */
 .pagination {
   display: inline-block;
   padding-left: 15px;
@@ -74,6 +131,14 @@
   position: fixed;
   bottom: 5%;
   right: 5%;
+}
+
+.pagination .disabled {
+  color: #14508e;
+}
+
+.pagination .disabled:hover {
+  cursor: default;
 }
 
 .pagination > li {
@@ -90,11 +155,11 @@
 
 .pagination > li.active {
   text-align: center;
-  color: #0b2f35;
+  color: #14508e;
 }
 
 .pagination > li.active > a {
-  border: 1px solid #0b2f35;
+  border: 1px solid #14508e;
   border-radius: 12%;
 }
 
@@ -116,8 +181,7 @@
    clear: both;
 }
 
-
-
+/* Search bar */
 input[type=text] {
   width: 130px;
   box-sizing: border-box;
