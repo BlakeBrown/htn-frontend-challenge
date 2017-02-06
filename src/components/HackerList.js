@@ -49,6 +49,7 @@ class HackerList extends Component {
 	  console.log(hackersPaginated);
 	  this.setState({hackersPaginated});
 	  this.setState({offset});
+		this.refs.searchBar.value = '';
 	};
 
 	listSkills = function(hacker) {
@@ -56,6 +57,20 @@ class HackerList extends Component {
 				<li key={index} className="hacker-skill">{skill.skill}</li>
 			);
 	}
+
+	onChange = function(event) {
+		console.log(event.target.value);
+		let hackersPaginated = [];
+		for(let i = 0; i < this.state.hackers.length; i++) {
+			if(~this.state.hackers[i].name.toLowerCase().indexOf(event.target.value.toLowerCase())) {
+				hackersPaginated.push(this.state.hackers[i]);
+			}
+			if(hackersPaginated.length == 10) {
+				break;
+			}
+		}
+		this.setState({hackersPaginated});
+	 }
 
 	render() {
 		let hackers = this.state.hackersPaginated.map((hacker,index) =>
@@ -70,19 +85,22 @@ class HackerList extends Component {
 		);
 
 		return (
-			<div className="hacker-list">
-			  	{ hackers }
-				<ReactPaginate previousLabel={"previous"}
-					nextLabel={"next"}
-					breakLabel={<a href="">...</a>}
-					breakClassName={"break-me"}
-					pageCount={this.state.pageCount}
-					marginPagesDisplayed={2}
-					pageRangeDisplayed={5}
-					onPageChange={this.handlePageClick}
-					containerClassName={"pagination"}
-					subContainerClassName={"pages pagination"}
-					activeClassName={"active"} />
+			<div>
+				<input className="searchBar" type="text" name="search" placeholder="Search" ref="searchBar" onChange={this.onChange.bind(this)} />
+				<div className="hacker-list">
+				  	{ hackers }
+					<ReactPaginate previousLabel={"previous"}
+						nextLabel={"next"}
+						breakLabel={<a href="">...</a>}
+						breakClassName={"break-me"}
+						pageCount={this.state.pageCount}
+						marginPagesDisplayed={2}
+						pageRangeDisplayed={5}
+						onPageChange={this.handlePageClick}
+						containerClassName={"pagination"}
+						subContainerClassName={"pages pagination"}
+						activeClassName={"active"} />
+				</div>
 			</div>
 		)
 	}
