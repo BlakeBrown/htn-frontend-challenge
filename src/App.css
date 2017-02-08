@@ -23,6 +23,11 @@
 }
 
 /* Hackers */
+.component-wrapper {
+  position: absolute;
+  min-height: 1650px;
+}
+
 .hacker-wrapper {
   position: relative;
   width: 600px;
@@ -123,14 +128,16 @@
 
 /* Pagination */
 .pagination {
-  display: inline-block;
+  display: block;
   padding-left: 15px;
   padding-right: 15px;
   background-color: #0ec6fd;
   border-radius: 4px;
-  position: fixed;
-  bottom: 5%;
-  right: 5%;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 20px;
+  width: 1200px;
+  text-align: center;
 }
 
 .pagination .disabled {
@@ -183,23 +190,22 @@
 
 /* Search bar */
 input[type=text] {
-  width: 130px;
+  width: 402px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
-  position: fixed;
-  top: 3%;
-  left: 34%;
+  margin-left: 15px;
+  margin-bottom: 14px;
   font-size: 16px;
   background-color: white;
   background-image: url(http://www.w3schools.com/howto/searchicon.png);
   background-position: 10px 10px;
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+/*  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;*/
 }
 
-input[type=text]:focus {
+/*input[type=text]:focus {
   width: 50%;
-}
+}*/

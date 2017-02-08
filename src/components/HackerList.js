@@ -134,7 +134,7 @@ class HackerList extends Component {
 		);
 
 		return (
-			<div>
+			<div className="component-wrapper">
 				<input className="searchBar" type="text" name="search" placeholder="Search" ref="searchBar" onChange={this.onChange.bind(this)} />
 				<div className="hacker-list">
 				  	{ hackers }
